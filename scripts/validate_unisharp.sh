@@ -5,7 +5,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
 
 CONDA_SH="${CONDA_SH:-/media/home/smx/miniconda3/bin/conda}"
-CONDA_ENV="${CONDA_ENV:-sharp}"
+CONDA_ENV="${CONDA_ENV:-unisharp}"
 if [[ -x "${CONDA_SH}" ]]; then
   eval "$("${CONDA_SH}" shell.bash hook)"
   conda activate "${CONDA_ENV}"
@@ -41,25 +41,25 @@ if [[ -d "${REPO_ROOT}/../validation_manifests" ]]; then
   DEFAULT_VALIDATION_MANIFEST_DIR="${REPO_ROOT}/../validation_manifests"
 fi
 export VALIDATION_MANIFEST_DIR="${VALIDATION_MANIFEST_DIR:-${DEFAULT_VALIDATION_MANIFEST_DIR}}"
-export VALIDATION_PSEUDO_DEPTH_ROOT="${VALIDATION_PSEUDO_DEPTH_ROOT:-/media/team_data/ML4_team/datasets/sharp/validation_unik3d_pseudo_depth}"
-export RE10K_PSEUDO_DEPTH_ROOT="${RE10K_PSEUDO_DEPTH_ROOT:-/media/team_data/ML4_team/datasets/nopose/re10k_unik3d_pseudo_depth/test}"
+export VALIDATION_PSEUDO_DEPTH_ROOT="${VALIDATION_PSEUDO_DEPTH_ROOT:-/media/team_data/ML4_team/datasets/validation_depth}"
+export RE10K_PSEUDO_DEPTH_ROOT="${RE10K_PSEUDO_DEPTH_ROOT:-/media/team_data/ML4_team/datasets/re10k_depth/test}"
 
-export DATA_ROOT_RE10K="${DATA_ROOT_RE10K:-/media/team_data/ML4_team/datasets/nopose/re10k}"
-export DATA_ROOT_DL3DV="${DATA_ROOT_DL3DV:-/media/team_data/ML4_team/datasets/sharp/DL3DV-ALL-960P}"
-export DATA_ROOT_HM3D="${DATA_ROOT_HM3D:-/media/team_data/ML4_team/datasets/panogs}"
-export DATA_ROOT_REPLICA="${DATA_ROOT_REPLICA:-/media/team_data/ML4_team/datasets/sharp/replica}"
-export DATA_ROOT_SIM="${DATA_ROOT_SIM:-/media/team_data/ML4_team/datasets/smx_sim}"
-export SIM_POSE_ROOT="${SIM_POSE_ROOT:-/media/team_data/ML4_team/datasets/smx_sim/30cm}"
+export DATA_ROOT_RE10K="${DATA_ROOT_RE10K:-/media/team_data/ML4_team/datasets/re10k}"
+export DATA_ROOT_DL3DV="${DATA_ROOT_DL3DV:-/media/team_data/ML4_team/datasets/DL3DV-ALL-960P}"
+export DATA_ROOT_HM3D="${DATA_ROOT_HM3D:-/media/team_data/ML4_team/datasets/hm3d}"
+export DATA_ROOT_REPLICA="${DATA_ROOT_REPLICA:-/media/team_data/ML4_team/datasets/replica}"
+export DATA_ROOT_SIM="${DATA_ROOT_SIM:-/media/team_data/ML4_team/datasets/omnirooms}"
+export SIM_POSE_ROOT="${SIM_POSE_ROOT:-/media/team_data/ML4_team/datasets/omnirooms/pose}"
 DEFAULT_DATASET_MANIFEST_DIR="${REPO_ROOT}/dataset_manifests"
 if [[ -d "${REPO_ROOT}/../dataset_manifests" ]]; then
   DEFAULT_DATASET_MANIFEST_DIR="${REPO_ROOT}/../dataset_manifests"
 fi
 export WILD_ROOTS_FILE="${WILD_ROOTS_FILE:-${DEFAULT_DATASET_MANIFEST_DIR}/wildrgbd_roots.txt}"
-export DATA_ROOT_SCANNETPP="${DATA_ROOT_SCANNETPP:-/media/home/songmeixi_insta360.com/sharpgs/scannetpp}"
+export DATA_ROOT_SCANNETPP="${DATA_ROOT_SCANNETPP:-/media/team_data/ML4_team/datasets/scannetpp}"
 export DATA_ROOT_SCANETPP_FISHEYE="${DATA_ROOT_SCANETPP_FISHEYE:-/media/team_data/ML4_team/datasets/scan}"
 export DATA_ROOT_TAT="${DATA_ROOT_TAT:-/media/team_data/ML4_team/datasets/TAT/tanks_and_temples}"
 
-DATASETS_CSV="${DATASETS:-re10k,dl3dv,hm3d,sim,wildrgbd}"
+DATASETS_CSV="${DATASETS:-re10k,dl3dv,hm3d,omnirooms,wildrgbd}"
 IFS=',' read -r -a DATASET_ARR <<< "${DATASETS_CSV}"
 IFS=',' read -r -a GPU_ID_ARR <<< "${GPU_IDS}"
 if [[ "${VALIDATION_JOBS_PER_GPU}" -lt 1 ]]; then
@@ -79,11 +79,11 @@ data_root_for_dataset() {
       fi
       ;;
     replica) echo "${DATA_ROOT_REPLICA}" ;;
-    sim) echo "${DATA_ROOT_SIM}" ;;
+    omnirooms) echo "${DATA_ROOT_SIM}" ;;
     wildrgbd) echo "${WILD_ROOTS_FILE}" ;;
     scannetpp) echo "${DATA_ROOT_SCANNETPP}" ;;
     scanetpp_fisheye) echo "${DATA_ROOT_SCANETPP_FISHEYE}" ;;
-    smx_sim_fisheye) echo "${DATA_ROOT_SIM}" ;;
+    omnirooms_wide) echo "${DATA_ROOT_SIM}" ;;
     tat) echo "${DATA_ROOT_TAT}" ;;
     *) echo "Unknown dataset: $1" >&2; return 1 ;;
   esac
@@ -92,7 +92,7 @@ data_root_for_dataset() {
 extra_args_for_dataset() {
   case "$1" in
     re10k) echo "--re10k-pseudo-depth-root ${RE10K_PSEUDO_DEPTH_ROOT}" ;;
-    sim) echo "--sim-pose-root ${SIM_POSE_ROOT}" ;;
+    omnirooms) echo "--sim-pose-root ${SIM_POSE_ROOT}" ;;
     *) echo "" ;;
   esac
 }
