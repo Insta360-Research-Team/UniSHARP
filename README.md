@@ -37,7 +37,7 @@ UniSHARP extends SHARP-style photorealistic monocular view synthesis to universa
 Clone this repository and enter the project directory:
 
 ```bash
-git clone https://github.com/Insta360-Research-Team/UniSHARP.git
+git clone 
 cd Unisharp
 ```
 
@@ -90,6 +90,28 @@ The released dataset is hosted on Hugging Face:
 
 **OmniRooms** is a panoramic simulation dataset highly suitable for 3D reconstruction, especially for 3DGS tasks. It consists of 16 large indoor scenes, each containing multiple rooms, and 300k RGB images covering both small and large pose movements with corresponding depth information. OmniRooms is collected via AirSim, with **OmniRooms-Wide** derived by projecting these panoramas into 130-degree equidistant fisheye views. For each anchor point on a 0.5 m voxel grid, one central camera and 29 randomly sampled cameras within a 0.3 m-radius sphere are rendered. To isolate translation-induced synthesis, all cameras share a fixed orientation. Each frame is rendered as a 1024 x 2048 ERP image.
 
+<p align="center">
+  <img src="assets/dataset/AIUE5_vol8_03_2x2.jpg" width="24%" alt="OmniRooms scene AIUE5 vol8 03">
+  <img src="assets/dataset/AIUE5_vol8_04_2x2.jpg" width="24%" alt="OmniRooms scene AIUE5 vol8 04">
+  <img src="assets/dataset/AIUE5_vol8_05_2x2.jpg" width="24%" alt="OmniRooms scene AIUE5 vol8 05">
+  <img src="assets/dataset/AIUE_V01_001_2x2.jpg" width="24%" alt="OmniRooms scene AIUE V01 001">
+  <br>
+  <img src="assets/dataset/AIUE_V01_003_2x2.jpg" width="24%" alt="OmniRooms scene AIUE V01 003">
+  <img src="assets/dataset/AIUE_V01_004_2x2.jpg" width="24%" alt="OmniRooms scene AIUE V01 004">
+  <img src="assets/dataset/AIUE_V02_001_2x2.jpg" width="24%" alt="OmniRooms scene AIUE V02 001">
+  <img src="assets/dataset/AI_vol3_01_2x2.jpg" width="24%" alt="OmniRooms scene AI vol3 01">
+  <br>
+  <img src="assets/dataset/AI_vol3_02_2x2.jpg" width="24%" alt="OmniRooms scene AI vol3 02">
+  <img src="assets/dataset/AI_vol3_03_2x2.jpg" width="24%" alt="OmniRooms scene AI vol3 03">
+  <img src="assets/dataset/AI_vol3_04_2x2.jpg" width="24%" alt="OmniRooms scene AI vol3 04">
+  <img src="assets/dataset/AI_vol4_01_2x2.jpg" width="24%" alt="OmniRooms scene AI vol4 01">
+  <br>
+  <img src="assets/dataset/AI_vol4_02_2x2.jpg" width="24%" alt="OmniRooms scene AI vol4 02">
+  <img src="assets/dataset/AI_vol4_03_2x2.jpg" width="24%" alt="OmniRooms scene AI vol4 03">
+  <img src="assets/dataset/AI_vol4_04_2x2.jpg" width="24%" alt="OmniRooms scene AI vol4 04">
+  <img src="assets/dataset/AI_vol4_05_2x2.jpg" width="24%" alt="OmniRooms scene AI vol4 05">
+</p>
+
 The code supports the following data sources and manifest aliases:
 
 - `RealEstate10K`
@@ -125,7 +147,7 @@ validation_manifests/
 ├── wildrgbd.txt                     
 ├── scanetpp_fisheye.txt              
 ├── replica.txt                       
-└── tat.txt                           
+├── tat.txt                           
 ```
 
 ## Checkpoints
