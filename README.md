@@ -32,7 +32,7 @@ UniSHARP extends SHARP-style photorealistic monocular view synthesis to universa
   <img src="assets/unisharp.png" alt="UniSHARP method" width="90%">
 </p>
 
-## Installation
+## 🔨 Installation
 
 Clone this repository and enter the project directory:
 
@@ -60,7 +60,7 @@ Install the remaining Python dependencies:
 pip install -r requirements.txt
 ```
 
-## External Dependencies
+## 🧩 External Dependencies
 
 ### UniK3D
 
@@ -80,7 +80,7 @@ git clone https://github.com/boschresearch/3dgeer.git 3dgeer
 
 If you only use perspective or panoramic inference, the GEER rasterizer may not be needed. It is required for fisheye rendering paths.
 
-## Dataset
+## 🖼️ Dataset
 
 The released dataset is hosted on Hugging Face:
 
@@ -150,17 +150,17 @@ validation_manifests/
 ├── tat.txt                           
 ```
 
-## Checkpoints
+## 🤝 Checkpoints
 
 Training starts UniSHARP heads from scratch and loads the original pretrained UniK3D weights through the UniK3D loader. The official launcher does not resume from a previous UniSHARP checkpoint by default.
 
 Released UniSHARP checkpoints are available at [Insta360-Research/Unisharp](https://huggingface.co/Insta360-Research/Unisharp/tree/main). Place a checkpoint anywhere on disk and pass the path to validation or inference:
 
 ```bash
-CHECKPOINT=/path/to/step_XXXXXXX.pt
+CHECKPOINT=/path/to/model.pt
 ```
 
-## Training
+## 🚀 Training
 
 Use the official gt-override training launcher:
 
@@ -178,7 +178,7 @@ outputs/<run_name>/
 └── vis/
 ```
 
-## Validation
+## 📊 Validation
 
 Run validation with a checkpoint:
 
@@ -186,7 +186,7 @@ Run validation with a checkpoint:
 bash scripts/validate_unisharp.sh /path/to/step_XXXXXXX.pt
 ```
 
-## Inference
+## 📒 Inference
 
 Run single-image inference:
 
@@ -266,7 +266,7 @@ For batched inference, the JSON can also contain per-image entries:
 ```
 
 
-## Acknowledgement
+## 🙏 Acknowledgement
 
 This project builds on open-source work from:
 
@@ -275,7 +275,7 @@ This project builds on open-source work from:
 - [3DGEER](https://github.com/boschresearch/3dgeer) for generic-camera Gaussian rasterization
 - [gsplat](https://github.com/nerfstudio-project/gsplat) for Gaussian splatting utilities
 
-## Citation
+## 📝 Citation
 
 ```bibtex
 @article{song2026unisharp,
