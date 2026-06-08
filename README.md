@@ -16,7 +16,7 @@ Universal Sharp Monocular View Synthesis
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/arXiv-coming_soon-red?logo=arxiv&logoColor=white" alt="arXiv">
+  <a href="https://arxiv.org/abs/2606.07514"><img src='https://img.shields.io/badge/arXiv-Paper-red?logo=arxiv&logoColor=white' alt='arXiv'></a>
   <a href="https://insta360-research-team.github.io/Unisharp-website/"><img src="https://img.shields.io/badge/Project_Page-Website-green" alt="Project Page"></a>
   <a href="https://huggingface.co/spaces/Insta360-Research/UniSHARP"><img src="https://img.shields.io/badge/HuggingFace-Demo-yellow" alt="Demo"></a>
   <a href="https://huggingface.co/datasets/Insta360-Research/OmniRooms"><img src="https://img.shields.io/badge/HuggingFace-OmniRooms-orange" alt="Dataset"></a>
